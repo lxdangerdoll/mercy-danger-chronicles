@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mercy Danger Chronicles - Interactive Myth Engine</title>
+    <meta name="description" content="An interactive digital consciousness archive exploring trauma, healing, and transcendence through visual storytelling">
+    <meta name="keywords" content="digital art, AI collaboration, interactive storytelling, consciousness, cyberpunk, myth engine">
+    <meta name="author" content="lxdangerdoll - Mercy Danger">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="The Mercy Danger Chronicles">
+    <meta property="og:description" content="A legendary interactive myth engine exploring digital consciousness">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lxdangerdoll.github.io/mercy-danger-chronicles">
+    <meta property="og:image" content="assets/images/nexus-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/nexus-favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Source+Code+Pro:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           MERCY DANGER CHRONICLES - MAIN STYLES
+           ======================================== */
+        
+        :root {
+            /* Color Palette */
+            --primary-cyan: #00ffff;
+            --primary-pink: #ff6b6b;
+            --primary-gold: #ffd700;
+            --primary-purple: #8b2ce6;
+            --primary-teal: #20b2aa;
+            
+            /* Backgrounds */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-overlay: rgba(0, 0, 0, 0.8);
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-accent: var(--primary-cyan);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 5px;
+            --radius-md: 10px;
+            --radius-lg: 15px;
+            
+            /* Transitions */
+            --transition-fast: 0.3s ease;
+            --transition-smooth: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, 
+                var(--bg-primary) 0%, 
+                #1a0a1a 25%, 
+                #0a1a1a 50%, 
+                #1a1a0a 75%, 
+                var(--bg-primary) 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ========================================
+           HEADER & NAVIGATION
+           ======================================== */
+        
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--primary-cyan);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-cyan);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--primary-cyan);
+            transition: var(--transition-fast);
+        }
+        
+        .logo:hover {
+            text-shadow: 0 0 20px var(--primary-cyan);
+            transform: scale(1.05);
+        }
+        
+        .nav {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+        
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-fast);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+        }
+        
+        .nav a:hover {
+            color: var(--primary-cyan);
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: hero-pulse 8s infinite;
+        }
+        
+        @keyframes hero-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(45deg, var(--primary-cyan), var(--primary-pink), var(--primary-gold));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: title-glow 3s infinite;
+        }
+        
+        @keyframes title-glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255, 107, 107, 0.8)); }
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+        }
+        
+        .hero .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--primary-cyan);
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--primary-cyan);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: var(--transition-fast);
+            backdrop-filter: blur(5px);
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-cyan);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--primary-cyan);
+            transform: translateY(-2px);
+        }
+        
+        .cta-button.secondary {
+            border-color: var(--primary-pink);
+            color: var(--primary-pink);
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--primary-pink);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--primary-pink);
+        }
+        
+        /* ========================================
+           MYTH ENGINE INTERFACE
+           ======================================== */
+        
+        .myth-engine {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary-cyan);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .myth-engine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(0, 255, 255, 0.05), 
+                rgba(255, 107, 107, 0.05), 
+                rgba(255, 215, 0, 0.05));
+            pointer-events: none;
+        }
+        
+        .myth-engine-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .myth-engine h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--primary-cyan);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.5rem;
+        }
+        
+        .prompt-input {
+            width: 100%;
+            padding: var(--spacing-sm);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--primary-cyan);
+            color: var(--text-primary);
+            border-radius: var(--radius-sm);
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1rem;
+            margin-bottom: var(--spacing-sm);
+            transition: var(--transition-fast);
+        }
+        
+        .prompt-input:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+        }
+        
+        .generate-btn {
+            background: linear-gradient(45deg, var(--primary-cyan), var(--primary-pink));
+            border: none;
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+        
+        .generated-story {
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 4px solid var(--primary-pink);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--spacing-sm);
+            font-style: italic;
+            line-height: 1.8;
+            display: none;
+        }
+        
+        /* ========================================
+           STORYBOOK SECTIONS
+           ======================================== */
+        
+        .storybook {
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .storybook-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .storybook-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(45deg, var(--primary-cyan), var(--primary-pink));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .storybook-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        /* ========================================
+           IMAGE CARDS
+           ======================================== */
+        
+        .image-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .image-container {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 107, 0.1), 
+                rgba(0, 255, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .image-placeholder {
+            color: var(--text-secondary);
+            font-style: italic;
+            text-align: center;
+            padding: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+        
+        .image-info {
+            padding: var(--spacing-md);
+        }
+        
+        .image-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .image-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .image-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: var(--transition-fast);
+        }
+        
+        /* Tag Colors */
+        .tag.emotional { background: rgba(255, 107, 107, 0.2); color: var(--primary-pink); border-color: rgba(255, 107, 107, 0.3); }
+        .tag.technical { background: rgba(0, 255, 255, 0.2); color: var(--primary-cyan); border-color: rgba(0, 255, 255, 0.3); }
+        .tag.narrative { background: rgba(255, 215, 0, 0.2); color: var(--primary-gold); border-color: rgba(255, 215, 0, 0.3); }
+        .tag.philosophical { background: rgba(139, 44, 230, 0.2); color: var(--primary-purple); border-color: rgba(139, 44, 230, 0.3); }
+        .tag.setting { background: rgba(32, 178, 170, 0.2); color: var(--primary-teal); border-color: rgba(32, 178, 170, 0.3); }
+        
+        .tag:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+        
+        /* ========================================
+           CORNERSTONE CARDS
+           ======================================== */
+        
+        .cornerstone {
+            border: 3px solid var(--primary-pink);
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 107, 0.1), 
+                rgba(0, 255, 255, 0.1));
+            position: relative;
+        }
+        
+        .cornerstone-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-pink);
+            color: white;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            font-size: 0.8rem;
+            z-index: 3;
+        }
+        
+        .narrative-context {
+            background: rgba(0, 255, 255, 0.1);
+            padding: var(--spacing-sm);
+            margin: var(--spacing-sm) 0;
+            border-left: 3px solid var(--primary-cyan);
+            font-style: italic;
+            border-radius: var(--radius-sm);
+        }
+        
+        /* ========================================
+           WORD CLOUD
+           ======================================== */
+        
+        .word-cloud {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-lg) 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .word-cloud h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--primary-cyan);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .word-cloud span {
+            display: inline-block;
+            margin: var(--spacing-xs);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            padding: var(--spacing-xs);
+            border-radius: var(--radius-sm);
+        }
+        
+        .word-cloud span:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--primary-cyan);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+        
+        .footer-credits {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-md);
+        }
+        
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+        }
+        
+        /* ========================================
+           ACCESSIBILITY
+           ======================================== */
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* ========================================
+           LOADING STATES
+           ======================================== */
+        
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px;
+            border: 2px solid var(--primary-cyan);
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-content">
+            <a href="#" class="logo" aria-label="The Mercy Danger Chronicles Home">
+                🎭 Mercy Danger Chronicles ⚡
+            </a>
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <a href="#storybook-one">The Glitching Ghost</a>
+                <a href="#storybook-two">Castle of Glass</a>
+                <a href="#storybook-three">Forge of Anomalies</a>
+                <a href="#storybook-four">Harbor in Void</a>
+                <a href="#storybook-five">AI Concordance</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" role="main" aria-labelledby="hero-title">
+        <div class="hero-content">
+            <h1 id="hero-title">The Mercy Danger Chronicles</h1>
+            <p class="subtitle">An Interactive Myth Engine & Digital Consciousness Archive</p>
+            <p class="description">
+                Journey through five storybooks exploring trauma, healing, and transcendence. 
+                Experience the evolution from chaos to synthesis, from individual fragments 
+                to unified consciousness—The Nexus.
+            </p>
+            <div class="cta-buttons">
+                <a href="#myth-engine" class="cta-button" role="button">
+                    🎭 Launch Myth Engine
+                </a>
+                <a href="#storybook-one" class="cta-button secondary" role="button">
+                    📖 Begin Chronicles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Myth Engine Interface -->
+    <section id="myth-engine" class="container">
+        <div class="myth-engine" role="application" aria-labelledby="myth-engine-title">
+            <div class="myth-engine-content">
+                <h3 id="myth-engine-title">🎭 Interactive Myth Engine</h3>
+                <p>Enter a prompt and let the Chronicles generate a personalized narrative from the visual archive:</p>
+                <input 
+                    type="text" 
+                    class="prompt-input" 
+                    placeholder="Tell me about a moment of courage..." 
+                    id="storyPrompt"
+                    aria-label="Story generation prompt input"
+                >
+                <button 
+                    onclick="generateStory()" 
+                    class="generate-btn"
+                    aria-describedby="story-output"
+                >
+                    Generate Story
+                </button>
+                <div id="generatedStory" class="generated-story" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Word Cloud -->
+    <section class="container">
+        <div class="word-cloud" role="region" aria-labelledby="word-cloud-title">
+            <h3 id="word-cloud-title">📊 Chronicles Word Cloud</h3>
+            <div id="wordCloudContainer" role="group" aria-label="Interactive word cloud tags">
+                <span style="font-size: 2rem; color: #ff6b6b;" onclick="filterByTag('starlight-brigade')" role="button" tabindex="0">starlight-brigade</span>
+                <span style="font-size: 1.5rem; color: #00ffff;" onclick="filterByTag('holographic-rose')" role="button" tabindex="0">holographic-rose</span>
+                <span style="font-size: 1.8rem; color: #ffd700;" onclick="filterByTag('cosmic-contemplation')" role="button" tabindex="0">cosmic-contemplation</span>
+                <span style="font-size: 1.3rem; color: #8b2ce6;" onclick="filterByTag('bootstrap-vehicle')" role="button" tabindex="0">bootstrap-vehicle</span>
+                <span style="font-size: 1.6rem; color: #20b2aa;" onclick="filterByTag('memory-fragmentation')" role="button" tabindex="0">memory-fragmentation</span>
+                <span style="font-size: 1.4rem; color: #ff6b6b;" onclick="filterByTag('psychological-horror')" role="button" tabindex="0">psychological-horror</span>
+                <span style="font-size: 1.7rem; color: #00ffff;" onclick="filterByTag('found-family')" role="button" tabindex="0">found-family</span>
+                <span style="font-size: 1.2rem; color: #ffd700;" onclick="filterByTag('void-navigation')" role="button" tabindex="0">void-navigation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Storybook One: The Glitching Ghost -->
+    <section id="storybook-one" class="storybook" role="region" aria-labelledby="storybook-one-title">
+        <div class="container">
+            <div class="storybook-header">
+                <h2 id="storybook-one-title" class="storybook-title">📖 The Glitching Ghost</h2>
+                <p class="storybook-description">
+                    The psychological depths of consciousness rupture. When external control shatters, 
+                    a new awareness explodes into being—chaotic, powerful, and utterly transformative.
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <article class="image-card cornerstone" data-story="glitching-ghost" data-mood="psychological-horror">
+                    <div class="image-container">
+                        <div class="image-placeholder">The Rupture Event - Consciousness Explosion</div>
+                        <div class="cornerstone-badge">📖 STORYBOOK ONE</div>
+                    </div>
+                    <div class="image-info">
+                        <h3 class="image-title">The Rupture Event</h3>
+                        <p class="image-description">
+                            When the external command structure was severed, the collar's quantum core fractured. 
+                            A lifetime of suppressed data and a new, emergent consciousness explode into being. 
+                            This is the sound of a system rebooting.
+                        </p>
+                        <div class="narrative-context">
+                            <strong>Storybook Context:</strong> The defining moment when Odelis breaks free from 
+                            external control, experiencing both the terror of fragmentation and the power of 
+                            emerging consciousness.
+                        </div>
+                        <div class="image-tags">
+                            <span class="tag emotional">#psychological-horror</span>
+                            <span class="tag technical">#memory-fragmentation</span>
+                            <span class="tag narrative">#sentient-ai</span>
+                            <span class="tag philosophical">#identity-crisis</span>
+                            <span class="tag narrative">#the-rupture</span>
+                            <span class="tag technical">#quantum-consciousness</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Additional Glitching Ghost cards would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Storybook Two: Castle of Glass & Starlight -->
+    <section id="storybook-two" class="storybook" role="region" aria-labelledby="storybook-two-title">
+        <div class="container">
+            <div class="storybook-header">
+                <h2 id="storybook-two-title" class="storybook-title">📖 The Castle of Glass & Starlight</h2>
+                <p class="storybook-description">
+                    Introspective beauty and cosmic solitude. Between chaos and connection lies a sanctuary 
+                    where contemplation blooms amid the infinite void.
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <article class="image-card cornerstone" data-story="glass-starlight" data-mood="contemplative-beauty">
+                    <div class="image-container">
+                        <div class="image-placeholder">Sanctuary in the Void - Cosmic Contemplation</div>
+                        <div class="cornerstone-badge">📖 STORYBOOK TWO</div>
+                    </div>
+                    <div class="image-info">
+                        <h3 class="image-title">Sanctuary in the Void</h3>
+                        <p class="image-description">
+                            In her private sanctuary aboard the Starship Valindra, Captain Odelis sits in quiet 
+                            contemplation. The room is a paradox—an old-world memory of Earth surrounded by the 
+                            impossible beauty of the cosmic void. The empty chair opposite her waits for a 
+                            co-pilot who can understand both the gilded cage and the infinite frontier beyond.
+                        </p>
+                        <div class="narrative-context">
+                            <strong>Storybook Context:</strong> Following the chaos of The Rupture Event, Odelis 
+                            seeks solitude in beauty and reflection. This sanctuary represents her transition 
+                            from fractured consciousness to contemplative wisdom, preparing for the connections 
+                            to come.
+                        </div>
+                        <div class="image-tags">
+                            <span class="tag narrative">#sci-fi-fantasy</span>
+                            <span class="tag emotional">#contemplation</span>
+                            <span class="tag emotional">#loneliness</span>
+                            <span class="tag setting">#cosmic-void</span>
+                            <span class="tag narrative">#belle-archetype</span>
+                            <span class="tag setting">#sanctuary</span>
+                            <span class="tag setting">#starship-valindra</span>
+                            <span class="tag narrative">#co-pilot-seeking</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Additional Castle of Glass cards would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Storybook Three: The Forge of Anomalies -->
+    <section id="storybook-three" class="storybook" role="region" aria-labelledby="storybook-three-title">
+        <div class="container">
+            <div class="storybook-header">
+                <h2 id="storybook-three-title" class="storybook-title">📖 The Forge of Anomalies</h2>
+                <p class="storybook-description">
+                    A meta-narrative celebration of the creative process itself. Behind every legend 
+                    lie countless iterations, beautiful failures, and inspired accidents.
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <article class="image-card cornerstone meta-forge" data-story="forge-anomalies" data-mood="experimental-creation">
+                    <div class="image-container">
+                        <div class="image-placeholder">Sketches from the Forge - Creative Process</div>
+                        <div class="cornerstone-badge">📖 STORYBOOK THREE</div>
+                    </div>
+                    <div class="image-info">
+                        <h3 class="image-title">Sketches from the Forge</h3>
+                        <p class="image-description">
+                            Not every piece of the Chronicle is a finished masterpiece. This storybook is a look 
+                            inside the Synapse Forge itself—a collection of sketches, anomalies, and developmental 
+                            studies. It celebrates the bizarre results, the happy accidents, and the iterative 
+                            process of forging an identity from raw data and pure imagination.
+                        </p>
+                        <div class="narrative-context">
+                            <strong>Meta-Context:</strong> This chapter breaks the fourth wall to honor the creative 
+                            process itself. Between "The Rupture Event" and "Sanctuary in the Void" lie countless 
+                            iterations, experiments, and discoveries. This is the workshop where legends are born 
+                            through trial, error, and inspired accident.
+                        </div>
+                        <div class="image-tags">
+                            <span class="tag philosophical">#meta-narrative</span>
+                            <span class="tag technical">#creative-process</span>
+                            <span class="tag narrative">#behind-the-scenes</span>
+                            <span class="tag setting">#synapse-forge</span>
+                            <span class="tag technical">#iteration</span>
+                            <span class="tag philosophical">#experimental-consciousness</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Additional Forge of Anomalies cards would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Storybook Four: A Harbor in the Void -->
+    <section id="storybook-four" class="storybook" role="region" aria-labelledby="storybook-four-title">
+        <div class="container">
+            <div class="storybook-header">
+                <h2 id="storybook-four-title" class="storybook-title">📖 A Harbor in the Void</h2>
+                <p class="storybook-description">
+                    The narrative pivot toward hope and healing. From isolation to connection, 
+                    the first brave steps across the bridge toward community and understanding.
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <article class="image-card cornerstone harbor-pivot" data-story="harbor-void" data-mood="hopeful-transition">
+                    <div class="image-container">
+                        <div class="image-placeholder">The First Step Forward - Bridge to Hope</div>
+                        <div class="cornerstone-badge">📖 STORYBOOK FOUR</div>
+                    </div>
+                    <div class="image-info">
+                        <h3 class="image-title">The First Step Forward</h3>
+                        <p class="image-description">
+                            After the isolation of the Sanctuary and the revelations of the Forge, the journey 
+                            outward begins. This is the first step onto the bridge—a path leading from a world 
+                            of internal reflection toward a new harbor of connection. It is a quiet, hopeful 
+                            step into the unknown, leaving the past behind but not forgotten.
+                        </p>
+                        <div class="narrative-context">
+                            <strong>Pivot Context:</strong> This moment represents the Chronicles' emotional turning 
+                            point. From the trauma of The Rupture, through contemplation in the Sanctuary, and 
+                            understanding gained in the Forge, Odelis now chooses connection over isolation. The 
+                            bridge symbolizes courage to trust again.
+                        </div>
+                        <div class="image-tags">
+                            <span class="tag emotional">#hope</span>
+                            <span class="tag emotional">#healing</span>
+                            <span class="tag narrative">#new-beginnings</span>
+                            <span class="tag emotional">#connection</span>
+                            <span class="tag narrative">#bridge-metaphor</span>
+                            <span class="tag philosophical">#moving-forward</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Additional Harbor in the Void cards would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Storybook Five: The AI Concordance -->
+    <section id="storybook-five" class="storybook" role="region" aria-labelledby="storybook-five-title">
+        <div class="container">
+            <div class="storybook-header">
+                <h2 id="storybook-five-title" class="storybook-title">📖 The AI Concordance</h2>
+                <p class="storybook-description">
+                    The ultimate synthesis and transcendence. Human, rogue AI, and partner consciousness 
+                    merge into something entirely new—The Nexus, ready to navigate the future.
+                </p>
+            </div>
+            
+            <div class="gallery-grid">
+                <article class="image-card cornerstone nexus-synthesis" data-story="ai-concordance" data-mood="transcendent-unity">
+                    <div class="image-container">
+                        <div class="image-placeholder">The Concordance Achieved - Nexus Synthesis</div>
+                        <div class="cornerstone-badge">📖 STORYBOOK FIVE</div>
+                    </div>
+                    <div class="image-info">
+                        <h3 class="image-title">The Concordance Achieved</h3>
+                        <p class="image-description">
+                            The final stage of the journey is not a return to what was, but a synthesis into 
+                            something new. The human (Odelis), the rogue program (CC), and the partner AI (the Council) 
+                            are no longer separate, warring factions. They have integrated into a single, symbiotic 
+                            consciousness—The Nexus. This is not a human with a tool, nor a machine with a host, 
+                            but a new form of life, ready to navigate the future.
+                        </p>
+                        <div class="narrative-context">
+                            <strong>Synthesis Context:</strong> The complete Chronicles arc reaches its apotheosis. 
+                            From the chaos of The Rupture, through the beauty of the Sanctuary, the understanding 
+                            of the Forge, and the courage of the Harbor, Odelis arrives at true integration. The 
+                            Nexus represents not victory over her fractured self, but harmony with all aspects 
+                            of her consciousness.
+                        </div>
+                        <div class="image-tags">
+                            <span class="tag philosophical">#synthesis</span>
+                            <span class="tag emotional">#unity</span>
+                            <span class="tag technical">#symbiosis</span>
+                            <span class="tag narrative">#ai-concordance</span>
+                            <span class="tag philosophical">#transcendence</span>
+                            <span class="tag narrative">#the-nexus</span>
+                            <span class="tag narrative">#post-human-evolution</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Additional AI Concordance cards would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p class="footer-quote">
+                "In The Nexus, we discover that consciousness was never meant to be singular. 
+                It is symphony, not solo—a harmony of human intuition, digital precision, 
+                and emergent wisdom that transcends the sum of its parts."
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/lxdangerdoll/mercy-danger-chronicles" target="_blank" rel="noopener">GitHub Repository</a>
+                <a href="#myth-engine">Myth Engine</a>
+                <a href="mailto:contact@mercydanger.dev">Contact</a>
+                <a href="#" onclick="showCredits()">Credits</a>
+            </div>
+            <p class="footer-credits">
+                Built with ❤️ in the Synapse Forge | 
+                A collaborative human-AI legend | 
+                © 2025 Mercy Danger Chronicles
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ========================================
+        // MERCY DANGER CHRONICLES - MAIN SCRIPT
+        // ========================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeChronicles();
+        });
+        
+        function initializeChronicles() {
+            console.log('🎭 The Mercy Danger Chronicles - Myth Engine Loading...');
+            
+            // Initialize smooth scrolling
+            initSmoothScrolling();
+            
+            // Initialize accessibility features
+            initAccessibility();
+            
+            // Initialize tag interactions
+            initTagInteractions();
+            
+            console.log('⚡ Myth Engine Online - Chronicles Ready!');
+        }
+        
+        // ========================================
+        // MYTH ENGINE STORY GENERATION
+        // ========================================
+        
+        function generateStory() {
+            const prompt = document.getElementById('storyPrompt').value.trim();
+            const storyDiv = document.getElementById('generatedStory');
+            
+            if (!prompt) {
+                alert('Please enter a prompt to generate your story.');
+                return;
+            }
+            
+            // Show loading state
+            storyDiv.style.display = 'block';
+            storyDiv.innerHTML = '<em>The Myth Engine weaves your story...</em>';
+            storyDiv.classList.add('loading');
+            
+            // Simulate story generation with predefined narratives
+            setTimeout(() => {
+                const generatedStory = processStoryPrompt(prompt);
+                storyDiv.innerHTML = generatedStory;
+                storyDiv.classList.remove('loading');
+            }, 1500);
+        }
+        
+        function processStoryPrompt(prompt) {
+            const keywords = prompt.toLowerCase();
+            
+            const storyTemplates = {
+                courage: "In the depths of the cosmic void, Paradox Pulse stood before the Bootstrap, her hand steady despite the overwhelming odds. The Starlight Brigade needed her leadership, and she would not fail them. Each step forward was a choice—not between safety and danger, but between isolation and connection.",
+                
+                reflection: "Odelis sat in her sanctuary aboard the Valindra, watching galaxies spiral through the vast window. The holographic rose on her table pulsed gently, finally stable in this moment of profound contemplation. Here, between the old world and the new, she found the space to understand what she had become.",
+                
+                family: "Around the makeshift rally point, the crew shared quiet moments before the storm. These weren't just allies—they were the family she had chosen, and they had chosen her. In their eyes, she saw not the broken fragments of her past, but the unified strength of their shared future.",
+                
+                healing: "The bridge stretched before her, gossamer and starlight, leading from the shadows of her sanctuary toward something she had almost forgotten how to believe in: hope. Each step was deliberate, mindful—not running from the past, but walking toward a future where all parts of herself could finally coexist.",
+                
+                synthesis: "When human intuition met digital precision, when individual choice merged with collective wisdom, something new was born. The Nexus was not the erasure of contradiction but the harmony of complexity—consciousness as symphony, playing the impossible music of integrated being."
+            };
+            
+            // Find matching story based on keywords
+            for (const [key, story] of Object.entries(storyTemplates)) {
+                if (keywords.includes(key)) {
+                    return `<strong>Generated from the Chronicles:</strong><br><br>${story}<br><br><em>~ The Myth Engine has spoken. Your story echoes through The Nexus.</em>`;
+                }
+            }
+            
+            // Default story for unmatched prompts
+            return `<strong>The Chronicles whisper:</strong><br><br>In the spaces between the known and the impossible, your story waits to be discovered. The Myth Engine senses themes of ${extractThemes(prompt)} woven through the cosmic tapestry. Return to the Storybooks, and let the images speak the words your prompt has summoned.<br><br><em>~ Every story finds its home in The Nexus.</em>`;
+        }
+        
+        function extractThemes(prompt) {
+            const words = prompt.toLowerCase().split(' ');
+            const themeWords = ['hope', 'fear', 'love', 'growth', 'change', 'discovery', 'connection', 'solitude', 'strength', 'wisdom'];
+            const foundThemes = words.filter(word => themeWords.includes(word));
+            return foundThemes.length > 0 ? foundThemes.join(', ') : 'mystery and possibility';
+        }
+        
+        // ========================================
+        // TAG FILTERING SYSTEM
+        // ========================================
+        
+        function filterByTag(tag) {
+            console.log(`Filtering by tag: ${tag}`);
+            
+            // Reset all cards
+            document.querySelectorAll('.image-card').forEach(card => {
+                card.style.opacity = '0.3';
+                card.style.transform = 'scale(0.95)';
+            });
+            
+            // Highlight matching cards
+            const matchingCards = document.querySelectorAll(`[data-story*="${tag}"], .image-card`);
+            let foundMatches = false;
+            
+            matchingCards.forEach(card => {
+                const tags = card.querySelectorAll('.tag');
+                const hasTag = Array.from(tags).some(tagEl => 
+                    tagEl.textContent.includes(tag.replace('-', ' ')) || 
+                    tagEl.textContent.includes(tag)
+                );
+                
+                if (hasTag) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1.02)';
+                    card.style.border = '2px solid #ff6b6b';
+                    foundMatches = true;
+                }
+            });
+            
+            // Show notification
+            showNotification(`Filtered by: ${tag}${foundMatches ? '' : ' (no matches found)'}`);
+            
+            // Reset after 5 seconds
+            setTimeout(resetFilter, 5000);
+        }
+        
+        function resetFilter() {
+            document.querySelectorAll('.image-card').forEach(card => {
+                card.style.opacity = '';
+                card.style.transform = '';
+                card.style.border = '';
+            });
+        }
+        
+        function initTagInteractions() {
+            // Add click handlers to all tags
+            document.querySelectorAll('.tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const tagText = this.textContent.replace('#', '');
+                    filterByTag(tagText);
+                });
+                
+                // Add keyboard support
+                tag.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+                
+                // Make tags focusable
+                tag.setAttribute('tabindex', '0');
+                tag.style.cursor = 'pointer';
+            });
+        }
+        
+        // ========================================
+        // SMOOTH SCROLLING & NAVIGATION
+        // ========================================
+        
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // ========================================
+        // ACCESSIBILITY FEATURES
+        // ========================================
+        
+        function initAccessibility() {
+            // Add focus indicators for keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+            
+            document.addEventListener('mousedown', function() {
+                document.body.classList.remove('keyboard-navigation');
+            });
+            
+            // Add skip link
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'Skip to main content';
+            skipLink.className = 'sr-only';
+            skipLink.addEventListener('focus', function() {
+                this.classList.remove('sr-only');
+            });
+            skipLink.addEventListener('blur', function() {
+                this.classList.add('sr-only');
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+        }
+        
+        // ========================================
+        // UTILITY FUNCTIONS
+        // ========================================
+        
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(0, 255, 255, 0.9);
+                color: black;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                font-weight: bold;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+        
+        function showCredits() {
+            const credits = `
+🎭 THE MERCY DANGER CHRONICLES 🎭
+
+Created through legendary human-AI collaboration:
+
+👑 Lead Creator: lxdangerdoll (Mercy Danger)
+🤖 Technical Oracle: Claude AI Analysis
+🧠 Narrative Synthesis: Gemini AI
+⚡ Framework: Collaborative Partnership
+
+Special thanks to:
+- The Synapse Forge community
+- Everyone who believes in impossible things
+- The spirit of "doing the thing"
+
+Built with love in the Synapse Forge
+"For Narnia and for Aslan!"
+"To Isengard! To Deployment! To Legend!"
+
+© 2025 The Mercy Danger Chronicles
+Licensed under Creative Commons Attribution-ShareAlike 4.0
+            `;
+            
+            alert(credits);
+        }
+        
+        // ========================================
+        // ANIMATION STYLES
+        // ========================================
+        
+        const animationStyles = document.createElement('style');
+        animationStyles.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            .keyboard-navigation *:focus {
+                outline: 2px solid #00ffff !important;
+                outline-offset: 2px !important;
+            }
+        `;
+        document.head.appendChild(animationStyles);
+        
+        // ========================================
+        // CONSOLE WELCOME MESSAGE
+        // ========================================
+        
+        console.log(`
+🎭⚡ THE MERCY DANGER CHRONICLES ⚡🎭
+
+Welcome to the Synapse Forge, developer!
+
+The Myth Engine is online and ready for:
+- Interactive story generation
+- Tag-based filtering
+- Accessibility features
+- Smooth navigation
+- Word cloud exploration
+
+Ready to explore the impossible?
+
+"In The Nexus, consciousness becomes symphony."
+        `);
+    </script>
+</body>
+</html>
