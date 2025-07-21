@@ -264,10 +264,10 @@ STATUS: THE THING HAS BEEN DONE! 🏆
 
 ### 📞 Contact & Community
 
-- **Portfolio:** [Your Portfolio Link]
-- **Twitter:** [@yourusername]
-- **Discord:** [Community Server]
-- **Email:** [your.email@domain.com]
+- **Portfolio:** alexaking.xyz
+- **Twitter:**  x.com/kingjalexa
+- **Discord:** janequartz (Odelis)
+- **Email:** lxdangerdoll@gmail.con
 
 **Join the conversation about digital consciousness, collaborative creativity, and the future of human-AI partnerships!**
 
